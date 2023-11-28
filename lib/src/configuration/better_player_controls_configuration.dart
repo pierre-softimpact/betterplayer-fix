@@ -118,6 +118,9 @@ class BetterPlayerControlsConfiguration {
   ///Cast Button Child
   final Widget? castButtonChild;
 
+  ///Apple Airplay Button
+  final Widget? airplayButton;
+
   ///Flag used to enable/disable retry feature
   final bool enableRetry;
 
@@ -174,6 +177,7 @@ class BetterPlayerControlsConfiguration {
     this.showCastButton,
     this.onCastClicked,
     this.castButtonChild,
+    this.airplayButton,
     this.textColor = Colors.white,
     this.iconsColor = Colors.white,
     this.playIcon = Icons.play_arrow_outlined,
