@@ -188,7 +188,8 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             if (_controlsConfiguration.showCastButton ?? false)
-              _buildCastButton(_controlsConfiguration.onCastClicked!, _controlsConfiguration.castButtonChild!),
+              _buildCastButton(_controlsConfiguration.onCastClicked!, _controlsConfiguration.castButtonChild!,
+                  controlsNotVisible, _onPlayerHide),
             if (_controlsConfiguration.enablePip)
               _buildPipButtonWrapperWidget(controlsNotVisible, _onPlayerHide)
             else
@@ -243,8 +244,23 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     );
   }
 
-  Widget _buildCastButton(Function() onCastClicked, Widget child) {
-    return BetterPlayerMaterialClickableWidget(onTap: onCastClicked, child: child);
+  Widget _buildCastButton(Function() onCastClicked, Widget child, bool hideStuff, Function() onPlayerHide) {
+    return BetterPlayerMaterialClickableWidget(
+        onTap: onCastClicked,
+        child: AnimatedOpacity(
+          opacity: hideStuff ? 0.0 : 1,
+          duration: betterPlayerControlsConfiguration.controlsHideTime,
+          onEnd: onPlayerHide,
+          child: Container(
+            height: betterPlayerControlsConfiguration.controlBarHeight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                child,
+              ],
+            ),
+          ),
+        ));
   }
 
   Widget _buildMoreButton() {
@@ -392,7 +408,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     return _buildHitAreaClickableButton(
       icon: Icon(
         _controlsConfiguration.skipBackIcon,
-        size: 24,
+        size: 42,
         color: _controlsConfiguration.iconsColor,
       ),
       onClicked: skipBack,
@@ -403,7 +419,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     return _buildHitAreaClickableButton(
       icon: Icon(
         _controlsConfiguration.skipForwardIcon,
-        size: 24,
+        size: 42,
         color: _controlsConfiguration.iconsColor,
       ),
       onClicked: skipForward,
@@ -416,12 +432,12 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
       icon: isFinished
           ? Icon(
               Icons.replay,
-              size: 42,
+              size: 54,
               color: _controlsConfiguration.iconsColor,
             )
           : Icon(
               controller.value.isPlaying ? _controlsConfiguration.pauseIcon : _controlsConfiguration.playIcon,
-              size: 42,
+              size: 54,
               color: _controlsConfiguration.iconsColor,
             ),
       onClicked: () {
