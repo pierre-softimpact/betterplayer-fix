@@ -76,8 +76,7 @@ class BetterPlayerControlsConfiguration {
   final Duration controlsHideTime;
 
   ///Parameter used to build custom controls
-  final Widget Function(BetterPlayerController controller,
-      Function(bool) onPlayerVisibilityChanged)? customControlsBuilder;
+  final Widget Function(BetterPlayerController controller, Function(bool) onPlayerVisibilityChanged)? customControlsBuilder;
 
   ///Parameter used to change theme of the player
   final BetterPlayerTheme? playerTheme;
@@ -109,6 +108,15 @@ class BetterPlayerControlsConfiguration {
 
   ///Flag used to show/hide PiP mode
   final bool enablePip;
+
+  ///Flag used to show Cast Button
+  final bool? showCastButton;
+
+  ///Cast Button Functionality
+  final Function()? onCastClicked;
+
+  ///Cast Button Child
+  final Widget? castButtonChild;
 
   ///Flag used to enable/disable retry feature
   final bool enableRetry;
@@ -163,6 +171,9 @@ class BetterPlayerControlsConfiguration {
 
   const BetterPlayerControlsConfiguration({
     this.controlBarColor = Colors.black87,
+    this.showCastButton,
+    this.onCastClicked,
+    this.castButtonChild,
     this.textColor = Colors.white,
     this.iconsColor = Colors.white,
     this.playIcon = Icons.play_arrow_outlined,
