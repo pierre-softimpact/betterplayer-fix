@@ -176,8 +176,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     }
 
     return Container(
-      child: (_controlsConfiguration.enableOverflowMenu)
-          ? AnimatedOpacity(
+      child: AnimatedOpacity(
               opacity: controlsNotVisible ? 0.0 : 1.0,
               duration: _controlsConfiguration.controlsHideTime,
               onEnd: _onPlayerHide,
@@ -193,12 +192,14 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
                       _buildPipButtonWrapperWidget(controlsNotVisible, _onPlayerHide)
                     else
                       const SizedBox(),
+                       if(_controlsConfiguration.enableOverflowMenu)
+          
                     _buildMoreButton(),
                   ],
                 ),
               ),
             )
-          : const SizedBox(),
+          
     );
   }
 
