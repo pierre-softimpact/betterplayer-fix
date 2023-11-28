@@ -183,6 +183,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
         width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
