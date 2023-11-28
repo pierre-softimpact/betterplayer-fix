@@ -176,31 +176,28 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     }
 
     return Container(
-      child: AnimatedOpacity(
-              opacity: controlsNotVisible ? 0.0 : 1.0,
-              duration: _controlsConfiguration.controlsHideTime,
-              onEnd: _onPlayerHide,
-              child: Container(
-                height: _controlsConfiguration.controlBarHeight,
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    if (_controlsConfiguration.showCastButton ?? false)
-                      _buildCastButton(_controlsConfiguration.onCastClicked!, _controlsConfiguration.castButtonChild!),
-                    if (_controlsConfiguration.enablePip)
-                      _buildPipButtonWrapperWidget(controlsNotVisible, _onPlayerHide)
-                    else
-                      const SizedBox(),
-                       if(_controlsConfiguration.enableOverflowMenu)
-          
-                    _buildMoreButton(),
-                  ],
-                ),
-              ),
-            )
-          
-    );
+        child: AnimatedOpacity(
+      opacity: controlsNotVisible ? 0.0 : 0.5,
+      duration: _controlsConfiguration.controlsHideTime,
+      onEnd: _onPlayerHide,
+      child: Container(
+        height: _controlsConfiguration.controlBarHeight,
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            if (_controlsConfiguration.showCastButton ?? false)
+              _buildCastButton(_controlsConfiguration.onCastClicked!, _controlsConfiguration.castButtonChild!),
+            if (_controlsConfiguration.enablePip)
+              _buildPipButtonWrapperWidget(controlsNotVisible, _onPlayerHide)
+            else
+              const SizedBox(),
+            Spacer(),
+            if (_controlsConfiguration.enableOverflowMenu) _buildMoreButton(),
+          ],
+        ),
+      ),
+    ));
   }
 
   Widget _buildPipButton() {
@@ -225,7 +222,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
         final bool isPipSupported = snapshot.data ?? false;
         if (isPipSupported && _betterPlayerController!.betterPlayerGlobalKey != null) {
           return AnimatedOpacity(
-            opacity: hideStuff ? 0.0 : 1.0,
+            opacity: hideStuff ? 0.0 : 0.5,
             duration: betterPlayerControlsConfiguration.controlsHideTime,
             onEnd: onPlayerHide,
             child: Container(
@@ -269,7 +266,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
       return const SizedBox();
     }
     return AnimatedOpacity(
-      opacity: controlsNotVisible ? 0.0 : 1.0,
+      opacity: controlsNotVisible ? 0.0 : 0.5,
       duration: _controlsConfiguration.controlsHideTime,
       onEnd: _onPlayerHide,
       child: Container(
@@ -315,7 +312,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
       child: BetterPlayerMaterialClickableWidget(
         onTap: _onExpandCollapse,
         child: AnimatedOpacity(
-          opacity: controlsNotVisible ? 0.0 : 1.0,
+          opacity: controlsNotVisible ? 0.0 : 0.5,
           duration: _controlsConfiguration.controlsHideTime,
           child: Container(
             height: _controlsConfiguration.controlBarHeight,
@@ -341,7 +338,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     return Container(
       child: Center(
         child: AnimatedOpacity(
-          opacity: controlsNotVisible ? 0.0 : 1.0,
+          opacity: controlsNotVisible ? 0.0 : 0.5,
           duration: _controlsConfiguration.controlsHideTime,
           child: _buildMiddleRow(),
         ),
@@ -494,7 +491,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
         }
       },
       child: AnimatedOpacity(
-        opacity: controlsNotVisible ? 0.0 : 1.0,
+        opacity: controlsNotVisible ? 0.0 : 0.5,
         duration: _controlsConfiguration.controlsHideTime,
         child: ClipRect(
           child: Container(
