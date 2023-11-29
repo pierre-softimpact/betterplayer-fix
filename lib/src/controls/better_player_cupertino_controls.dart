@@ -90,6 +90,7 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
         barHeight,
         buttonPadding,
       ),
+      Spacer(),
       if (_wasLoading) Expanded(child: Center(child: _buildLoadingWidget())) else _buildHitArea(),
       _buildNextVideoWidget(),
       _buildBottomBar(
@@ -783,20 +784,22 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
               left: buttonPadding,
               right: buttonPadding,
             ),
-            child: SizedBox(
-              height: 38,
-              width: 38,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(0, 0, 0, 0.5),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                child: AirPlayRoutePickerView(
-                    tintColor: Colors.white, activeTintColor: Colors.white, backgroundColor: Colors.transparent),
-              ),
-            )),
+            child: (_betterPlayerController?.isFullScreen ?? false)
+                ? SizedBox.shrink()
+                : SizedBox(
+                    height: 38,
+                    width: 38,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(0, 0, 0, 0.5),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: AirPlayRoutePickerView(
+                          tintColor: Colors.white, activeTintColor: Colors.white, backgroundColor: Colors.transparent),
+                    ),
+                  )),
       ),
     );
   }
