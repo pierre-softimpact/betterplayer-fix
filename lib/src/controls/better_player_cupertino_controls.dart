@@ -473,7 +473,14 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
             width: 4,
           ),
           if (_controlsConfiguration.airplayButton != null)
-            _buildAirplayButton(_controlsConfiguration.airplayButton!)
+            _buildAirplayButton(
+              _controlsConfiguration.airplayButton!,
+              backgroundColor,
+              iconColor,
+              barHeight,
+              iconSize,
+              buttonPadding,
+            )
           else
             const SizedBox(),
           const SizedBox(
@@ -722,8 +729,29 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
     );
   }
 
-  Widget _buildAirplayButton(Widget child) {
-    return child;
+  Widget _buildAirplayButton(
+    Widget child,
+    Color backgroundColor,
+    Color iconColor,
+    double barHeight,
+    double iconSize,
+    double buttonPadding,
+  ) {
+    return AnimatedOpacity(
+        opacity: controlsNotVisible ? 0.0 : 1.0,
+        duration: _controlsConfiguration.controlsHideTime,
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+                height: barHeight,
+                padding: EdgeInsets.only(
+                  left: buttonPadding,
+                  right: buttonPadding,
+                ),
+                decoration: BoxDecoration(
+                  color: backgroundColor.withOpacity(0.5),
+                ),
+                child: child)));
   }
 
   Widget _buildPipButton(
