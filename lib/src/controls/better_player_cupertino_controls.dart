@@ -738,20 +738,18 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
     double buttonPadding,
   ) {
     return AnimatedOpacity(
-        opacity: controlsNotVisible ? 0.0 : 1.0,
-        duration: _controlsConfiguration.controlsHideTime,
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-                height: barHeight,
-                padding: EdgeInsets.only(
-                  left: buttonPadding,
-                  right: buttonPadding,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor.withOpacity(0.5),
-                ),
-                child: child)));
+      opacity: controlsNotVisible ? 0.0 : 1.0,
+      duration: _controlsConfiguration.controlsHideTime,
+      child: SizedBox(
+        height: barHeight,
+        child: Padding(
+            padding: EdgeInsets.only(
+              left: buttonPadding,
+              right: buttonPadding,
+            ),
+            child: child),
+      ),
+    );
   }
 
   Widget _buildPipButton(
