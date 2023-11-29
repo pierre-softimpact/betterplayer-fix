@@ -109,6 +109,9 @@ class BetterPlayerControlsConfiguration {
   ///Flag used to show/hide PiP mode
   final bool enablePip;
 
+  ///Flag used to show/hide Airplay Button
+  final bool enableAirplay;
+
   ///Flag used to show Cast Button
   final bool? showCastButton;
 
@@ -118,8 +121,8 @@ class BetterPlayerControlsConfiguration {
   ///Cast Button Child
   final Widget? castButtonChild;
 
-  ///Apple Airplay Button
-  final Widget? airplayButton;
+  // ///Apple Airplay Button
+  // final Widget? airplayButton;
 
   ///Flag used to enable/disable retry feature
   final bool enableRetry;
@@ -177,7 +180,7 @@ class BetterPlayerControlsConfiguration {
     this.showCastButton,
     this.onCastClicked,
     this.castButtonChild,
-    this.airplayButton,
+    // this.airplayButton,
     this.textColor = Colors.white,
     this.iconsColor = Colors.white,
     this.playIcon = Icons.play_arrow_outlined,
@@ -212,6 +215,7 @@ class BetterPlayerControlsConfiguration {
     this.enableSubtitles = true,
     this.enableQualities = true,
     this.enablePip = true,
+    this.enableAirplay = true,
     this.enableRetry = true,
     this.overflowMenuCustomItems = const [],
     this.overflowMenuIcon = Icons.more_vert_outlined,

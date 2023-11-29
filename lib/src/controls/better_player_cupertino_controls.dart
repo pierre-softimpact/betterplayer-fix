@@ -9,6 +9,7 @@ import 'package:better_player/src/core/better_player_utils.dart';
 import 'package:better_player/src/video_player/video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_to_airplay/flutter_to_airplay.dart';
 
 class BetterPlayerCupertinoControls extends StatefulWidget {
   ///Callback used to send information if player bar is hidden or not
@@ -472,9 +473,8 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
           const SizedBox(
             width: 4,
           ),
-          if (_controlsConfiguration.airplayButton != null)
+          if (_controlsConfiguration.enableAirplay)
             _buildAirplayButton(
-              _controlsConfiguration.airplayButton!,
               backgroundColor,
               iconColor,
               barHeight,
@@ -730,7 +730,6 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
   }
 
   Widget _buildAirplayButton(
-    Widget child,
     Color backgroundColor,
     Color iconColor,
     double barHeight,
@@ -747,7 +746,20 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
               left: buttonPadding,
               right: buttonPadding,
             ),
-            child: child),
+            child: SizedBox(
+              height: 38,
+              width: 38,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: AirPlayRoutePickerView(
+                    tintColor: Colors.white, activeTintColor: Colors.white, backgroundColor: Colors.transparent),
+              ),
+            )),
       ),
     );
   }

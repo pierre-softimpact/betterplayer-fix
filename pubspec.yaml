@@ -22,6 +22,7 @@ dependencies:
   path_provider: ^2.0.10
   collection: ^1.16.0
   xml: ^6.1.0
+  flutter_to_airplay: ^2.0.4
 
 dev_dependencies:
   lint: ^2.2.0
