@@ -90,7 +90,7 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
         barHeight,
         buttonPadding,
       ),
-      Spacer(),
+      
       if (_wasLoading) Expanded(child: Center(child: _buildLoadingWidget())) else _buildHitArea(),
       _buildNextVideoWidget(),
       _buildBottomBar(
@@ -119,7 +119,8 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
         }
       },
       child: AbsorbPointer(
-          absorbing: controlsNotVisible, child: isFullScreen ? SafeArea(child: controlsColumn) : controlsColumn),
+        // isFullScreen ? SafeArea(child: controlsColumn) : 
+          absorbing: controlsNotVisible, child: controlsColumn), 
     );
   }
 
@@ -763,7 +764,7 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
                 left: buttonPadding,
                 right: buttonPadding,
               ),
-              child: child)),
+              child: (_betterPlayerController?.isFullScreen ?? false) ? SizedBox.shrink() : child)),
     );
   }
 
