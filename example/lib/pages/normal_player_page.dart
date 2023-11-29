@@ -24,6 +24,12 @@ class _NormalPlayerPageState extends State<NormalPlayerPage> {
         DeviceOrientation.portraitDown,
         DeviceOrientation.portraitUp
       ],
+      controlsConfiguration: BetterPlayerControlsConfiguration(
+        showCastButton: true,
+        onCastClicked: (){},
+        castButtonChild: Icon(Icons.cast_connected,color: Colors.blue,),
+
+      )
     );
     _betterPlayerDataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
