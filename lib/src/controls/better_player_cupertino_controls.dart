@@ -748,7 +748,7 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
                   horizontal: buttonPadding,
                 ),
                 decoration: BoxDecoration(color: backgroundColor),
-                child: child)));
+                child: controlsNotVisible ? SizedBox.shrink() : child)));
   }
 
   Widget _buildPipButton(
