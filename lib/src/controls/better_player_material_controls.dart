@@ -256,7 +256,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                child,
+                (_betterPlayerController?.isFullScreen ?? false) ? SizedBox.shrink() : child,
               ],
             ),
           ),
