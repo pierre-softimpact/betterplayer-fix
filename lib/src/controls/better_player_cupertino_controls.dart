@@ -744,13 +744,10 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
             borderRadius: BorderRadius.circular(10),
             child: Container(
                 height: barHeight,
-                padding: EdgeInsets.only(
-                  left: buttonPadding,
-                  right: buttonPadding,
+                padding: EdgeInsets.symmetric(
+                  horizontal: buttonPadding,
                 ),
-                decoration: BoxDecoration(
-                  color: backgroundColor.withOpacity(0.5),
-                ),
+                decoration: BoxDecoration(color: backgroundColor),
                 child: child)));
   }
 
