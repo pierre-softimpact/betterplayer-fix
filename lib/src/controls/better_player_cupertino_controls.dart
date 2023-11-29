@@ -472,17 +472,16 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
           const SizedBox(
             width: 4,
           ),
-          if (_controlsConfiguration.airplayButton != null)
+          
             _buildAirplayButton(
-              _controlsConfiguration.airplayButton!,
+              _controlsConfiguration.airplayButton ?? SizedBox.shrink(),
               backgroundColor,
               iconColor,
               barHeight,
               iconSize,
               buttonPadding,
-            )
-          else
-            const SizedBox(),
+            ),
+        
           const SizedBox(
             width: 4,
           ),
