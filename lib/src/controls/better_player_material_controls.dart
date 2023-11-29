@@ -188,8 +188,7 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             if (_controlsConfiguration.showCastButton ?? false)
-              _buildCastButton(_controlsConfiguration.onCastClicked!, _controlsConfiguration.castButtonChild!,
-                  controlsNotVisible, _onPlayerHide),
+              _buildCastButton(_controlsConfiguration.castButtonChild!, controlsNotVisible, _onPlayerHide),
             if (_controlsConfiguration.enablePip)
               _buildPipButtonWrapperWidget(controlsNotVisible, _onPlayerHide)
             else
@@ -244,9 +243,9 @@ class _BetterPlayerMaterialControlsState extends BetterPlayerControlsState<Bette
     );
   }
 
-  Widget _buildCastButton(Function() onCastClicked, Widget child, bool hideStuff, Function() onPlayerHide) {
+  Widget _buildCastButton(Widget child, bool hideStuff, Function() onPlayerHide) {
     return BetterPlayerMaterialClickableWidget(
-        onTap: onCastClicked,
+        onTap: () {},
         child: AnimatedOpacity(
           opacity: hideStuff ? 0.0 : 1,
           duration: betterPlayerControlsConfiguration.controlsHideTime,
