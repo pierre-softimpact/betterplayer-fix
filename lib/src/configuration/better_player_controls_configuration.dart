@@ -115,9 +115,6 @@ class BetterPlayerControlsConfiguration {
   ///Flag used to show Cast Button
   final bool? showCastButton;
 
-  ///Cast Button Functionality
-  final Function()? onCastClicked;
-
   ///Cast Button Child
   final Widget? castButtonChild;
 
@@ -177,8 +174,7 @@ class BetterPlayerControlsConfiguration {
 
   const BetterPlayerControlsConfiguration({
     this.controlBarColor = Colors.black87,
-    this.showCastButton,
-    this.onCastClicked,
+    this.showCastButton = false,
     this.castButtonChild,
     // this.airplayButton,
     this.textColor = Colors.white,

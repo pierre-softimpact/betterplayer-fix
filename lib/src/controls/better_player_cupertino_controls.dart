@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:better_player/src/configuration/better_player_controls_configuration.dart';
 import 'package:better_player/src/controls/better_player_controls_state.dart';
 import 'package:better_player/src/controls/better_player_cupertino_progress_bar.dart';
@@ -473,7 +474,21 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
           const SizedBox(
             width: 4,
           ),
-          if (_controlsConfiguration.enableAirplay)
+          if (_controlsConfiguration.showCastButton ?? false)
+            _buildCastButton(
+              _controlsConfiguration.castButtonChild!,
+              backgroundColor,
+              iconColor,
+              barHeight,
+              iconSize,
+              buttonPadding,
+            )
+          else
+            const SizedBox(),
+          const SizedBox(
+            width: 4,
+          ),
+          if (_controlsConfiguration.enableAirplay && Platform.isIOS)
             _buildAirplayButton(
               backgroundColor,
               iconColor,
@@ -726,6 +741,28 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
 
     return CircularProgressIndicator(
       valueColor: AlwaysStoppedAnimation<Color>(_controlsConfiguration.loadingColor),
+    );
+  }
+
+  Widget _buildCastButton(
+    Widget child,
+    Color backgroundColor,
+    Color iconColor,
+    double barHeight,
+    double iconSize,
+    double buttonPadding,
+  ) {
+    return AnimatedOpacity(
+      opacity: controlsNotVisible ? 0.0 : 1.0,
+      duration: _controlsConfiguration.controlsHideTime,
+      child: SizedBox(
+          height: barHeight,
+          child: Padding(
+              padding: EdgeInsets.only(
+                left: buttonPadding,
+                right: buttonPadding,
+              ),
+              child: child)),
     );
   }
 

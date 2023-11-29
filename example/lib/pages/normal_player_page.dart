@@ -26,7 +26,6 @@ class _NormalPlayerPageState extends State<NormalPlayerPage> {
       ],
       controlsConfiguration: BetterPlayerControlsConfiguration(
         showCastButton: true,
-        onCastClicked: (){},
         castButtonChild: Icon(Icons.cast_connected,color: Colors.blue,),
 
       )
