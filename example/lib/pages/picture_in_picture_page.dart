@@ -16,7 +16,8 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
   void initState() {
     BetterPlayerConfiguration betterPlayerConfiguration = BetterPlayerConfiguration(
         aspectRatio: 16 / 9,
-        fit: BoxFit.contain,
+        fit: BoxFit.fill,
+        fullScreenAspectRatio: 16/9,
         deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
         deviceOrientationsOnFullScreen: [
           DeviceOrientation.portraitUp,

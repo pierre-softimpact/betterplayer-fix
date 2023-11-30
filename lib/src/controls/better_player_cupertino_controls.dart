@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:better_player/src/configuration/better_player_controls_configuration.dart';
 import 'package:better_player/src/controls/better_player_controls_state.dart';
 import 'package:better_player/src/controls/better_player_cupertino_progress_bar.dart';
@@ -80,7 +81,7 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
         ? _controlsConfiguration.controlBarHeight
         : _controlsConfiguration.controlBarHeight + 10;
     const buttonPadding = 10.0;
-    final isFullScreen = _betterPlayerController?.isFullScreen == true;
+    // final isFullScreen = _betterPlayerController?.isFullScreen == true;
 
     _wasLoading = isLoading(_latestValue);
     final controlsColumn = Column(children: <Widget>[
@@ -792,9 +793,9 @@ class _BetterPlayerCupertinoControlsState extends BetterPlayerControlsState<Bett
                     width: 38,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(0, 0, 0, 0.5),
+                        color: Colors.black38,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+                          Radius.circular(8),
                         ),
                       ),
                       child: AirPlayRoutePickerView(

@@ -122,9 +122,9 @@ class _VideoProgressBarState
       },
       child: Center(
         child: Container(
+          padding: EdgeInsets.only(bottom: 8),
           height: MediaQuery.of(context).size.height / 2,
           width: MediaQuery.of(context).size.width,
-          color: Colors.transparent,
           child: CustomPaint(
             painter: _ProgressBarPainter(
               _getValue(),
@@ -197,7 +197,7 @@ class _ProgressBarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const height = 2.0;
+    const height = 8.0;
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
@@ -251,7 +251,7 @@ class _ProgressBarPainter extends CustomPainter {
     );
     canvas.drawCircle(
       Offset(playedPart, size.height / 2 + height / 2),
-      height * 3,
+      0,
       colors.handlePaint,
     );
   }
