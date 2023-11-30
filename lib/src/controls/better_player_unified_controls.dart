@@ -286,22 +286,10 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
               children: [
                 (_betterPlayerController?.isFullScreen ?? false)
                     ? SizedBox.shrink()
-                    : SizedBox(
-                        height: 38,
-                        width: 38,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(0, 0, 0, 0.5),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          child: AirPlayRoutePickerView(
-                            tintColor: Colors.white,
-                            activeTintColor: Colors.white,
-                            backgroundColor: Colors.transparent,
-                          ),
-                        ),
+                    : AirPlayRoutePickerView(
+                        tintColor: Colors.white,
+                        activeTintColor: Colors.white,
+                        backgroundColor: Colors.transparent,
                       )
               ],
             ),
