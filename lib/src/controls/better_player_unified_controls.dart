@@ -370,9 +370,11 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
   }
 
   Widget _buildLiveWidget() {
-    return Text(
-      _betterPlayerController!.translations.controlsLive,
-      style: TextStyle(color: _controlsConfiguration.liveTextColor, fontWeight: FontWeight.bold),
+    return Expanded(
+      child: Text(
+        _betterPlayerController!.translations.controlsLive,
+        style: TextStyle(color: _controlsConfiguration.liveTextColor, fontWeight: FontWeight.bold),
+      ),
     );
   }
 
