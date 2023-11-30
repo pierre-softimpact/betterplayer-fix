@@ -200,7 +200,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
                       padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xff868686))),
                       child: const Icon(
-                        Icons.arrow_forward_rounded,
+                        Icons.close,
                         size: 20,
                         color: Colors.white,
                       )),

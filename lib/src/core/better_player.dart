@@ -179,7 +179,7 @@ class _BetterPlayerState extends State<BetterPlayer> with WidgetsBindingObserver
                         decoration:
                             BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xff868686))),
                         child: const Icon(
-                          Icons.arrow_back_rounded,
+                          Icons.close,
                           size: 20,
                           color: Colors.white,
                         )),
