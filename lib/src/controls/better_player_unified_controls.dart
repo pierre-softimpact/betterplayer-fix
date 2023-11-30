@@ -230,9 +230,12 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
         betterPlayerController!.enablePictureInPicture(betterPlayerController!.betterPlayerGlobalKey!);
       },
       child: Container(
-  decoration: BoxDecoration(color: Colors.black38,borderRadius: BorderRadius.circular(8),),
-          height: _controlsConfiguration.controlBarHeight / 1.5,
-          margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.black38,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        height: _controlsConfiguration.controlBarHeight / 1.5,
+        margin: EdgeInsets.all(5),
         padding: EdgeInsets.symmetric(horizontal: 4),
         child: Icon(
           betterPlayerControlsConfiguration.pipMenuIcon,
@@ -314,9 +317,12 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
           duration: betterPlayerControlsConfiguration.controlsHideTime,
           onEnd: onPlayerHide,
           child: Container(
-  decoration: BoxDecoration(color: Colors.black38,borderRadius: BorderRadius.circular(8),),
-          height: _controlsConfiguration.controlBarHeight / 1.5,
-          margin: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.black38,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            height: _controlsConfiguration.controlBarHeight / 1.5,
+            margin: EdgeInsets.all(5),
             padding: EdgeInsets.symmetric(horizontal: 4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -334,9 +340,12 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
         onShowMoreClicked();
       },
       child: Container(
-  decoration: BoxDecoration(color: Colors.black38,borderRadius: BorderRadius.circular(8),),
-          height: _controlsConfiguration.controlBarHeight / 1.5,
-          margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.black38,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        height: _controlsConfiguration.controlBarHeight / 1.5,
+        margin: EdgeInsets.all(5),
         padding: EdgeInsets.symmetric(horizontal: 4),
         child: Icon(
           _controlsConfiguration.overflowMenuIcon,
@@ -359,10 +368,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            if (_betterPlayerController!.isLiveStream())
-              const SizedBox()
-            else
-              _controlsConfiguration.enableProgressBar ? _buildProgressBar() : const SizedBox(),
+            _controlsConfiguration.enableProgressBar ? _buildProgressBar() : const SizedBox(),
           ],
         ),
       ),
@@ -370,11 +376,9 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
   }
 
   Widget _buildLiveWidget() {
-    return Expanded(
-      child: Text(
-        _betterPlayerController!.translations.controlsLive,
-        style: TextStyle(color: _controlsConfiguration.liveTextColor, fontWeight: FontWeight.bold),
-      ),
+    return Text(
+      _betterPlayerController!.translations.controlsLive,
+      style: TextStyle(color: _controlsConfiguration.liveTextColor, fontWeight: FontWeight.bold),
     );
   }
 
@@ -425,16 +429,20 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
       color: _controlsConfiguration.controlBarColor,
       width: double.infinity,
       height: double.infinity,
-      child: _betterPlayerController?.isLiveStream() == true
-          ? const SizedBox()
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                if (_controlsConfiguration.enableSkips) Expanded(child: _buildSkipButton()) else const SizedBox(),
-                Expanded(child: _buildReplayButton(_controller!)),
-                if (_controlsConfiguration.enableSkips) Expanded(child: _buildForwardButton()) else const SizedBox(),
-              ],
-            ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          if (_controlsConfiguration.enableSkips && _betterPlayerController?.isLiveStream() == false)
+            Expanded(child: _buildSkipButton())
+          else
+            const SizedBox(),
+          Expanded(child: _buildReplayButton(_controller!)),
+          if (_controlsConfiguration.enableSkips && _betterPlayerController?.isLiveStream() == false)
+            Expanded(child: _buildForwardButton())
+          else
+            const SizedBox(),
+        ],
+      ),
     );
   }
 
@@ -766,7 +774,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (_betterPlayerController!.isLiveStream())
-              _buildLiveWidget()
+              Expanded(child: _buildLiveWidget())
             else
               Expanded(
                 child: Container(

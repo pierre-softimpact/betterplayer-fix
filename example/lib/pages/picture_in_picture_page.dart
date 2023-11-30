@@ -17,6 +17,7 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
     BetterPlayerConfiguration betterPlayerConfiguration = BetterPlayerConfiguration(
         aspectRatio: 16 / 9,
         fit: BoxFit.fill,
+        
         fullScreenAspectRatio: 16/9,
         deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
         deviceOrientationsOnFullScreen: [
@@ -35,6 +36,7 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
       Constants.elephantDreamVideoUrl,
+      liveStream: true
     );
 
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
