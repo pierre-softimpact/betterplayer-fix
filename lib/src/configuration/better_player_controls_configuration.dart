@@ -173,7 +173,7 @@ class BetterPlayerControlsConfiguration {
   final Color overflowModalTextColor;
 
   const BetterPlayerControlsConfiguration({
-    this.controlBarColor = Colors.black87,
+    this.controlBarColor = Colors.black26,
     this.showCastButton = false,
     this.castButtonChild,
     // this.airplayButton,

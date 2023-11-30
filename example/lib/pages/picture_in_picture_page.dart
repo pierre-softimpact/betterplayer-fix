@@ -1,6 +1,7 @@
 import 'package:better_player/better_player.dart';
 import 'package:better_player_example/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PictureInPicturePage extends StatefulWidget {
   @override
@@ -13,16 +14,32 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
 
   @override
   void initState() {
-    BetterPlayerConfiguration betterPlayerConfiguration =
-        BetterPlayerConfiguration(
-      aspectRatio: 16 / 9,
-      fit: BoxFit.contain,
-    );
+    BetterPlayerConfiguration betterPlayerConfiguration = BetterPlayerConfiguration(
+        aspectRatio: 16 / 9,
+        fit: BoxFit.contain,
+        deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
+        deviceOrientationsOnFullScreen: [
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight
+        ],
+        controlsConfiguration: BetterPlayerControlsConfiguration(
+          showCastButton: true,
+          playerTheme: BetterPlayerTheme.unified,
+          castButtonChild: Icon(
+            Icons.cast_connected,
+            color: Colors.blue,
+          ),
+        ));
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
       Constants.elephantDreamVideoUrl,
     );
+
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
+    _betterPlayerController.addEventsListener((event) => {
+          if (event.betterPlayerEventType == BetterPlayerEventType.pipStart) {_betterPlayerController.play()}
+        });
     _betterPlayerController.setupDataSource(dataSource);
     _betterPlayerController.setBetterPlayerGlobalKey(_betterPlayerKey);
     super.initState();
