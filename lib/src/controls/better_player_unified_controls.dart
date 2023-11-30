@@ -197,7 +197,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
                     betterPlayerController?.exitFullScreen();
                   },
                   child: Container(
-                      padding: const EdgeInsets.all(3),
+                      padding: const EdgeInsets.only(left:10,top:20),
                       decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xff868686))),
                       child: const Icon(
                         Icons.close,
@@ -286,10 +286,19 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
               children: [
                 (_betterPlayerController?.isFullScreen ?? false)
                     ? SizedBox.shrink()
-                    : AirPlayRoutePickerView(
-                        tintColor: Colors.white,
-                        activeTintColor: Colors.white,
-                        backgroundColor: Colors.transparent,
+                    : Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black38,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        height: _controlsConfiguration.controlBarHeight / 1.5,
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.symmetric(horizontal: 4),
+                        child: AirPlayRoutePickerView(
+                          tintColor: Colors.white,
+                          activeTintColor: Colors.white,
+                          backgroundColor: Colors.transparent,
+                        ),
                       )
               ],
             ),
