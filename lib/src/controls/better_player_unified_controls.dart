@@ -295,7 +295,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
                           borderRadius: BorderRadius.circular(8),
                         ),
                         height: _controlsConfiguration.controlBarHeight / 1.5,
-                        margin: EdgeInsets.all(5),
+                        
             
                         child: AirPlayRoutePickerView(
                           tintColor: Colors.white,
