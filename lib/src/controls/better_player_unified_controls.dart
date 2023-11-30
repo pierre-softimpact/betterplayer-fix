@@ -192,18 +192,21 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
             if ((betterPlayerController?.isFullScreen ?? false) &&
                 MediaQuery.of(context).orientation == Orientation.landscape)
               SafeArea(
-                child: GestureDetector(
-                  onTap: () {
-                    betterPlayerController?.exitFullScreen();
-                  },
-                  child: Container(
-                      padding: const EdgeInsets.only(left:10,top:20),
-                      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xff868686))),
-                      child: const Icon(
-                        Icons.close,
-                        size: 20,
-                        color: Colors.white,
-                      )),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 20),
+                  child: GestureDetector(
+                    onTap: () {
+                      betterPlayerController?.exitFullScreen();
+                    },
+                    child: Container(
+                        decoration:
+                            BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xff868686))),
+                        child: const Icon(
+                          Icons.close,
+                          size: 20,
+                          color: Colors.white,
+                        )),
+                  ),
                 ),
               ),
             if (_controlsConfiguration.showCastButton ?? false)
@@ -293,7 +296,7 @@ class _BetterPlayerUnifiedControlsState extends BetterPlayerControlsState<Better
                         ),
                         height: _controlsConfiguration.controlBarHeight / 1.5,
                         margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.symmetric(horizontal: 4),
+            
                         child: AirPlayRoutePickerView(
                           tintColor: Colors.white,
                           activeTintColor: Colors.white,
